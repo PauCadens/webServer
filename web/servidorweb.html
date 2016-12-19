@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Icona de la pestanya del navegador -->
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+ <!-- Numeric.js -->
+ 	<script src="http://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+  <!-- Plotly.js -->
+  	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<title> Implementaci&oacute d'un servidor web en una FPGA</title>
+	<!-- afegim colors i estil a la font, la llista de links a la dreta
+	padding-mou el text a la dreta
+	en ul.navbar:
+	hi ha les diferents distancies dels links respecte els marges de la pagina i el width es la separacio entre links-->
+
+	<style type="text/css">
+		body{
+			padding-left: 2em;
+			padding-top: 1em; 
+			font-family: Helvetica;
+			color:#000000;
+			background-color:#ffffff;
+		}
+		ul.navbar{
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			position:absolute;
+			top:2em;
+			left:1em;
+			width:9em;
+		}
+		h1{
+			font-family: Helvetica;
+		}
+		ul.navbar.li{
+			background: white;
+			margin: 0.5em 0;
+			padding: 0.3em;
+			border-right: 1em solid white;
+		}
+		ul.navbar.a{
+			text-decoration: none
+		}
+		a:link{
+			color:blue;
+		}
+		a:visited{
+			color: purple;
+		}
+		address{
+			margin-top: 1em;
+			padding-top: 1em;
+			border-top:thin dotted;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Implementaci&oacute d'un servidor web en una FPGA</h1>
+
+	<p>El gr&agravefic mostra el valors dels angles d'inclinaci&oacute en les eixos X i Y</p>
+
+	<p> Creacio d'un altre paragraf</p>
+
+	<div id="myDiv" style="width: 640px; height: 450px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+	
+  	<script>
+	    <!-- JAVASCRIPT CODE GOES HERE -->
+	    
+
+	    function getrandom(num , mul){ 
+        	var value = [ ]   
+	            for(i=0;i<=num;i++){
+	            	rand = Math.random() * mul;
+	           		value.push(rand);
+	           	}
+            return value;
+	        }
+	    	var trace1 = {
+	      // Aqui hi van els angles X i Y:	       
+		      	r: getrandom(62, 3),
+		      	t: getrandom(62, 300), 
+
+		      	mode: 'markers',
+		      	//name: 'Angle',
+		      	marker: {
+		        	color: 'rgb(191,1,0)',
+		        	size: 110,
+		        	line: {color: 'black'},
+		        opacity: 1
+	    	},
+	      	//type: 'scatter'
+	    };
+
+	    var data = [trace1];
+
+	    var layout = {
+	    	title: 'Angle',
+	      	font: {size: 15},
+	      	plot_bgcolor: 'rgb(235, 235, 235)',
+	      	angularaxis: {tickcolor: 'rgb(0,0,0)'}
+	    };
+
+	    Plotly.plot('myDiv', data, layout);
+
+  </script>
+  
+
+	<!-- Signatura, sempre queda bé -->
+	<address> Barcelona 9 de Novembre de 2016. Pau Cadens</address>
+</body>
+</html>

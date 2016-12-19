@@ -1,0 +1,58 @@
+<head>
+  <!-- Numeric.js -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+  <!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+  
+  <div id="myDiv" style="width: 960px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+    <!-- JAVASCRIPT CODE GOES HERE -->
+    
+
+    function getrandom(num , mul) 
+        {
+          var value = [ ]   
+            for(i=0;i<=num;i++)
+           {
+             rand = Math.random() * mul;
+           value.push(rand);
+           }
+            return value;
+        }
+        
+
+    var trace1 = {
+      // Aqui hi van els angles X i Y:
+       
+
+      r: getrandom(62, 3),
+      t: getrandom(62, 300), 
+
+      mode: 'markers',
+      name: 'Angle',
+      marker: {
+        color: 'rgb(191,1,0)',
+        size: 110,
+        line: {color: 'black'},
+        opacity: 1
+      },
+      type: 'scatter'
+    };
+
+    var data = [trace1];
+
+    var layout = {
+      title: 'Angle',
+      font: {size: 15},
+      plot_bgcolor: 'rgb(235, 235, 235)',
+      angularaxis: {tickcolor: 'rgb(0,0,0)'}
+    };
+
+    Plotly.plot('myDiv', data, layout);
+
+
+  </script>
+</body>
